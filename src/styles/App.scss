@@ -4,6 +4,11 @@ html, body {
   background-color: #ddd;
 }
 
+.container {
+  width: 100%;
+  height: 100%;
+}
+
 .content {
   width: 100%;
   height: 100%;
@@ -15,13 +20,41 @@ html, body {
   height: 100%;
 }
 
+/* image section start */
 .img-sec {
   position: relative;
   width: 100%;
   height: 100%;
   overflow: hidden;
   background-color: #ddd;
+
+  @at-root {
+    .img-figure {
+      position: absolute;
+
+      width: 320px;
+      height: 360px;
+      margin: 0;
+      padding: 40px;
+      background-color: #fff;
+
+      box-sizing: border-box;
+
+      img {
+        max-width: 100%;
+      }
+    }
+    figurecatption {
+      text-align: center;
+      .img-title {
+        margin-top: 20px;
+        color: #a7a0a2;
+        font-size: 16px
+      }
+    }
+  }
 }
+/* image section end */
 
 .controller-nav {
   position: absolute;

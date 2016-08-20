@@ -1,5 +1,6 @@
 import React from 'react';
 import Util from './Util';
+import ImageFigure from './ImageFigure';
 
 require('normalize.css/normalize.css');
 require('styles/App.scss');
@@ -7,18 +8,24 @@ require('styles/App.scss');
 let imageDataArr = require('../data/imageData.json');
 Util.generateImageURL(imageDataArr);
 
-let imgDOMs = (function(imageDataArr) {
-	return imageDataArr.map((imageData, index)=>{
-		return <img src={imageData.url} key={index} style={{maxHeight: '50px'}}/>;
-	});
-})(imageDataArr);
-
 class AppComponent extends React.Component {
   render() {
+
+    let controllerUnits = [],
+        imageFigures = [];
+
+    imageDataArr.forEach(function(imageData) {
+      imageFigures.push(<ImageFigure key={imageData.url} imageData={imageData}/>);
+    });
+
     return (
       <section className="stage">
-      	<section className="img-sec"></section>
-      	<nav className="controller-nav"></nav>
+      	<section className="img-sec">
+          {imageFigures}
+        </section>
+      	<nav className="controller-nav">
+          {controllerUnits}
+        </nav>
       </section>
     );
   }
