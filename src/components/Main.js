@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Util from './Util';
 import ImageFigure from './ImageFigure';
+import ControllerUnit from './ControllerUnit';
 
 require('normalize.css/normalize.css');
 require('styles/App.scss');
@@ -180,19 +181,21 @@ class AppComponent extends React.Component {
                             center: false
                         };
                     }
-                    imageFigures.push( < ImageFigure key = { imageData.url }
-                        imageData = { imageData }
-                        ref = { 'imageFigure' + index }
-                        arrange = { this.state.imgArrangeArr[index] }
-                        inverseFunc = { this.inverse }
-                        centerFunc = { this.center }
-                        index = { index }
-                        />);
-                    });
+                   imageFigures.push(
+                        <ImageFigure key = { imageData.url } imageData = { imageData } ref = { 'imageFigure' + index }
+                            arrange = { this.state.imgArrangeArr[index] } inverseFunc = { this.inverse } centerFunc = { this.center }
+                            index = { index }/>);
+                    controllerUnits.push( 
+                        <ControllerUnit key = {imageData.url} arrange={ this.state.imgArrangeArr[index]}
+                            inverseFunc = { this.inverse } centerFunc = { this.center }
+                            index = { index }/>);
+                });
+
+
 
                 return ( < section className = "stage"
                     ref = "stage" >
-                    < section className = "img-sec" > { imageFigures } < /section> < nav className = "controller-nav" > { controllerUnits } < /nav> < /section>
+                    < section className = "img-sec" > { imageFigures } < /section> < nav className = "controller-nav" > { controllerUnits } < /nav>  < /section>
                 );
             }
         }

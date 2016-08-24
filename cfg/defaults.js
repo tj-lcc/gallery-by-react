@@ -35,11 +35,15 @@ function getDefaultModules() {
         loader: 'json-loader'
       },
       {
-        test: /\.(png|jpg|gif|woff|woff2)$/,
+        test: /\.(png|jpg|gif)$/,
         loader: 'url-loader?limit=8192&name=images/[name].[ext]'
       },
       {
-        test: /\.(mp4|ogg|svg)$/,
+        test: /\.(woff|woff2|eot|ttf|svg)$/,
+        loader: 'url-loader?limit=8192&name=fonts/[name].[ext]'
+      },
+      {
+        test: /\.(mp4|ogg)$/,
         loader: 'file-loader'
       }
     ]
